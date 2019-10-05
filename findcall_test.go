@@ -2,17 +2,17 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package findcall_test
+package myfindcall_test
 
 import (
 	"testing"
 
+	"github.com/nakabonne/myfindcall"
 	"golang.org/x/tools/go/analysis/analysistest"
-	"golang.org/x/tools/go/analysis/passes/findcall"
 )
 
 func init() {
-	findcall.Analyzer.Flags.Set("name", "println")
+	myfindcall.Analyzer.Flags.Set("name", "println")
 }
 
 // TestFromStringLiterals demonstrates how to test an analysis using
@@ -46,7 +46,7 @@ func println(s string) {} // want println:"found"`,
 				t.Fatal(err)
 			}
 			defer cleanup()
-			analysistest.Run(t, dir, findcall.Analyzer, test.pkgpath)
+			analysistest.Run(t, dir, myfindcall.Analyzer, test.pkgpath)
 		})
 	}
 }
@@ -62,5 +62,5 @@ func println(s string) {} // want println:"found"`,
 // multiple variants of a single scenario.
 func TestFromFileSystem(t *testing.T) {
 	testdata := analysistest.TestData()
-	analysistest.Run(t, testdata, findcall.Analyzer, "a") // loads testdata/src/a/a.go.
+	analysistest.Run(t, testdata, myfindcall.Analyzer, "a") // loads testdata/src/a/a.go.
 }

@@ -9,7 +9,7 @@
 // matches the name, plus a package-level fact if the package contained
 // one or more such declarations.
 
-package findcall
+package myfindcall
 
 import (
 	"go/ast"
@@ -24,7 +24,7 @@ The findcall analysis reports calls to functions or methods
 of a particular name.`
 
 var Analyzer = &analysis.Analyzer{
-	Name:             "findcall",
+	Name:             "myfindcall",
 	Doc:              Doc,
 	Run:              run,
 	RunDespiteErrors: true,
